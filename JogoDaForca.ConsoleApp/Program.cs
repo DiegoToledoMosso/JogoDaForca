@@ -1,8 +1,10 @@
-﻿namespace JogoDaForca.ConsoleApp
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace JogoDaForca.ConsoleApp
 {
     internal class Program
     {
-        //Versão 2: Exibir palavra oculta com traços
+        //Versão 3: Verificação do input
         static void Main(string[] args)
         {
 
@@ -19,27 +21,39 @@
                     letrasEncontradas[caractere] = '_';
                 }
 
-                string dicaDaPalavra = String.Join("", letrasEncontradas);
+                int quantidadeErros = 0;
+                bool jogadorEnforcou = false;
+                bool jogadorAcertou = false;
 
-                Console.Clear();    
-                Console.WriteLine("-------------------------------------");
-                Console.WriteLine("Jogo da Forca");
-                Console.WriteLine("-------------------------------------");
-                Console.WriteLine("palavra secreta : " + palavraSecreta);
-                Console.WriteLine("-------------------------------------");
+                do
+                {
+                    string dicaDaPalavra = String.Join("", letrasEncontradas);
 
-                Console.Write("Digite uma letra: ");
-                char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
+                    Console.Clear();
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("Jogo da Forca");
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("palavra secreta : " + dicaDaPalavra);
+                    Console.WriteLine("-------------------------------------");
 
-                Console.WriteLine(chute);
+                    Console.Write("Digite uma letra: ");
+                    char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
 
-                Console.ReadLine(); 
-            }
+                    for (int contador = 0; contador < palavraSecreta.Length; contador++)
+                    {
+                        char letraAtual = palavraSecreta[contador];
 
+                        if (chute == letraAtual)
+                        {
+                            letrasEncontradas[contador] = letraAtual;
+                        }                       
 
+                    }
 
+                    Console.ReadLine();
 
-            
+                } while (jogadorAcertou == false || jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+            }    
 
         }
     }
