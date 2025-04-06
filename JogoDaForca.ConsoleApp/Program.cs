@@ -8,10 +8,49 @@ namespace JogoDaForca.ConsoleApp
         static void Main(string[] args)
         {
 
+
+            string[] frutas = [
+                "ABACATE",
+                "ABACAXI",
+                "ACEROLA",
+                "ACAI",
+                "ARACA",
+                "BACABA",
+                "BACURI",
+                "BANANA",
+                "CAJA",
+                "CAJU",
+                "CARAMBOLA",
+                "CUPUACU",
+                "GRAVIOLA",
+                "GOIABA",
+                "JABUTICABA",
+                "JENIPAPO",
+                "MACA",
+                "MANGABA",
+                "MANGA",
+                "MARACUJA",
+                "MURICI",
+                "PEQUI",
+                "PITANGA",
+                "PITAYA",
+                "SAPOTI",
+                "TANGERINA",
+                "UMBU",
+                "UVA",
+                "UVAIA"
+            ];
+
             while (true)
             {
 
-                string palavraSecreta = "MELANCIA";
+                Random geradorDeNumeros = new Random();
+
+                int indicePalavraEscolhida = geradorDeNumeros.Next(frutas.Length);
+
+                string palavraSecreta = frutas[indicePalavraEscolhida];
+
+               
 
                 char[] letrasEncontradas = new char[palavraSecreta.Length];
 
