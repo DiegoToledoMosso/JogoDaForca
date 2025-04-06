@@ -44,13 +44,17 @@ namespace JogoDaForca.ConsoleApp
             while (true)
             {
 
+                string[] historicoDeTentivas = new string[100];
+                int contadorHistorico = 0;
+
+
                 Random geradorDeNumeros = new Random();
 
                 int indicePalavraEscolhida = geradorDeNumeros.Next(frutas.Length);
 
                 string palavraSecreta = frutas[indicePalavraEscolhida];
 
-               
+
 
                 char[] letrasEncontradas = new char[palavraSecreta.Length];
 
@@ -100,7 +104,7 @@ namespace JogoDaForca.ConsoleApp
                         Console.WriteLine("_|____              ");
                         Console.WriteLine("-------------------------------------");
                     }
-                    else if(quantidadeErros == 2)
+                    else if (quantidadeErros == 2)
                     {
                         Console.WriteLine(" ___________        ");
                         Console.WriteLine(" |/                ");
@@ -114,7 +118,7 @@ namespace JogoDaForca.ConsoleApp
                         Console.WriteLine("-------------------------------------");
                     }
                     else if (quantidadeErros == 3)
-                    { 
+                    {
                         Console.WriteLine(" ___________        ");
                         Console.WriteLine(" |/                ");
                         Console.WriteLine(" |         o        ");
@@ -174,6 +178,9 @@ namespace JogoDaForca.ConsoleApp
                     Console.Write("Digite uma letra: ");
                     char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
 
+                    historicoDeTentivas[contadorHistorico] = $"A letra chutada foi : {chute}";
+                    contadorHistorico++;
+
                     bool letraFoiEncontrada = false;
 
                     for (int contador = 0; contador < palavraSecreta.Length; contador++)
@@ -185,7 +192,7 @@ namespace JogoDaForca.ConsoleApp
                             letrasEncontradas[contador] = letraAtual;
                             letraFoiEncontrada = true;
                         }
-                        
+
                     }
 
                     if (letraFoiEncontrada == false)
@@ -217,18 +224,29 @@ namespace JogoDaForca.ConsoleApp
                         Console.WriteLine(" |        / \\        ");
                         Console.WriteLine(" |       -----          ");
                         Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");                                              
+                        Console.WriteLine("_|____              ");
                         Console.WriteLine("-------------------------------------");
                         Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecreta);
                         Console.WriteLine("-------------------------------------");
 
                     }
 
-                } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+                    Console.WriteLine("--------------------------------------------");
+                    Console.WriteLine("Histórico de Tentativas");
+                    Console.WriteLine("--------------------------------------------");
 
+                    for (int contador = 0; contador < contadorHistorico; contador++)
+                    {
+
+                        Console.WriteLine(historicoDeTentivas[contador]);
+                    }
+
+
+                } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+                contadorHistorico++;
                 Console.ReadLine();
-            }    
-            
+            }
+
 
         }
     }
