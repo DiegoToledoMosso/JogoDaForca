@@ -33,6 +33,100 @@ namespace JogoDaForca.ConsoleApp
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("Jogo da Forca");
                     Console.WriteLine("-------------------------------------");
+
+                    if (quantidadeErros == 0)
+                    {
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/        |        ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+
+                    else if (quantidadeErros == 1)
+                    {
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/                ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |                      ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+                    else if(quantidadeErros == 2)
+                    {
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/                ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |         x            ");
+                        Console.WriteLine(" |         x         ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+                    else if (quantidadeErros == 3)
+                    { 
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/                ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |        /x\\             ");
+                        Console.WriteLine(" |         x         ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+                    else if (quantidadeErros == 4)
+                    {
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/                ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |        /x\\             ");
+                        Console.WriteLine(" |         x         ");
+                        Console.WriteLine(" |        / \\        ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+                    else if (quantidadeErros == 4)
+                    {
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/                ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |        /x\\             ");
+                        Console.WriteLine(" |         x         ");
+                        Console.WriteLine(" |        / \\        ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+                    else if (quantidadeErros == 5)
+                    {
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/                ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |        /x\\             ");
+                        Console.WriteLine(" |         x         ");
+                        Console.WriteLine(" |        / \\        ");
+                        Console.WriteLine(" |       -----          ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");
+                        Console.WriteLine("-------------------------------------");
+                    }
+
                     Console.WriteLine("palavra secreta : " + dicaDaPalavra);
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("Quantidade de erros : " + quantidadeErros);
@@ -75,6 +169,16 @@ namespace JogoDaForca.ConsoleApp
                     }
                     else if (jogadorEnforcou)
                     {
+                        Console.Clear();
+                        Console.WriteLine(" ___________        ");
+                        Console.WriteLine(" |/        |        ");
+                        Console.WriteLine(" |         o        ");
+                        Console.WriteLine(" |        /x\\             ");
+                        Console.WriteLine(" |         x         ");
+                        Console.WriteLine(" |        / \\        ");
+                        Console.WriteLine(" |       -----          ");
+                        Console.WriteLine(" |                  ");
+                        Console.WriteLine("_|____              ");                                              
                         Console.WriteLine("-------------------------------------");
                         Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecreta);
                         Console.WriteLine("-------------------------------------");
@@ -85,6 +189,7 @@ namespace JogoDaForca.ConsoleApp
 
                 Console.ReadLine();
             }    
+            
 
         }
     }
