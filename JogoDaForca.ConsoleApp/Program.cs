@@ -35,9 +35,13 @@ namespace JogoDaForca.ConsoleApp
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("palavra secreta : " + dicaDaPalavra);
                     Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("Quantidade de erros : " + quantidadeErros);
+                    Console.WriteLine("-------------------------------------");
 
                     Console.Write("Digite uma letra: ");
                     char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
+
+                    bool letraFoiEncontrada = false;
 
                     for (int contador = 0; contador < palavraSecreta.Length; contador++)
                     {
@@ -46,13 +50,40 @@ namespace JogoDaForca.ConsoleApp
                         if (chute == letraAtual)
                         {
                             letrasEncontradas[contador] = letraAtual;
-                        }                       
+                            letraFoiEncontrada = true;
+                        }
+                        
+                    }
+
+                    if (letraFoiEncontrada == false)
+                        quantidadeErros++;
+
+
+                    dicaDaPalavra = String.Join("", letrasEncontradas);
+
+                    jogadorAcertou = dicaDaPalavra == palavraSecreta;
+                    // O jogador poderá cometer 5 erros antes de perder.
+                    jogadorEnforcou = quantidadeErros == 6;
+
+
+                    if (jogadorAcertou)
+                    {
+                        Console.WriteLine("-------------------------------------");
+                        Console.WriteLine("Você acertou a palavra secreta, Parabéns!!");
+                        Console.WriteLine("-------------------------------------");
+
+                    }
+                    else if (jogadorEnforcou)
+                    {
+                        Console.WriteLine("-------------------------------------");
+                        Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecreta);
+                        Console.WriteLine("-------------------------------------");
 
                     }
 
-                    Console.ReadLine();
+                } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
 
-                } while (jogadorAcertou == false || jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+                Console.ReadLine();
             }    
 
         }
