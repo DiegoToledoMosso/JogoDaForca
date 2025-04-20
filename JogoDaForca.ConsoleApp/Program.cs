@@ -9,8 +9,16 @@ namespace JogoDaForca.ConsoleApp
         {
 
 
-            string[] frutas = [
-                "ABACATE",
+            
+
+
+
+
+                while (true)
+                {
+
+                string[] frutas = [
+            "ABACATE",
                 "ABACAXI",
                 "ACEROLA",
                 "ACAI",
@@ -39,213 +47,634 @@ namespace JogoDaForca.ConsoleApp
                 "UMBU",
                 "UVA",
                 "UVAIA"
-            ];
+        ];
+                string[] paises = [
+                    "Brasil",
+                "Polonia",
+                "Argentina"
+                ];
+                string[] animais = [
+                    "Cachorro",
+                "Gato",
+                "Girafa"
+                ];
 
-            while (true)
-            {
+                string escolha = null;            
+
+                
+
 
                 string[] historicoDeTentivas = new string[100];
                 int contadorHistorico = 0;
 
-
                 Random geradorDeNumeros = new Random();
 
-                int indicePalavraEscolhida = geradorDeNumeros.Next(frutas.Length);
 
-                string palavraSecreta = frutas[indicePalavraEscolhida];
 
+
+                int indicePalavraEscolhidaum = geradorDeNumeros.Next(frutas.Length);
+                int indicePalavraEscolhidadois = geradorDeNumeros.Next(animais.Length);
+                int indicePalavraEscolhidatres = geradorDeNumeros.Next(paises.Length);
+
+                string palavraSecreta = frutas[indicePalavraEscolhidaum];
+                string palavraSecretadois = animais[indicePalavraEscolhidadois];
+                string palavraSecretatres = paises[indicePalavraEscolhidatres];
 
 
                 char[] letrasEncontradas = new char[palavraSecreta.Length];
+                char[] letrasEncontradasdois = new char[palavraSecretadois.Length];
+                char[] letrasEncontradastres = new char[palavraSecretatres.Length];
 
-                for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
+
+
+                Console.Clear();
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("Jogo da Forca");
+                Console.WriteLine("-------------------------------------");
+
+                Console.WriteLine("Escolha uma categoria:");
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("1 - frutas ");
+                Console.WriteLine("2 - animais ");
+                Console.WriteLine("3 - países ");
+                Console.WriteLine("----------------------------------------");
+
+                Console.Write("Digite sua escolha: ");
+                string entrada = Console.ReadLine();
+
+
+                if (entrada == "1")
                 {
-                    //acessar o array no indicce 0
-                    letrasEncontradas[caractere] = '_';
-                }
-
-                int quantidadeErros = 0;
-                bool jogadorEnforcou = false;
-                bool jogadorAcertou = false;
-
-                do
-                {
-                    string dicaDaPalavra = String.Join("", letrasEncontradas);
-
-                    Console.Clear();
-                    Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("Jogo da Forca");
-                    Console.WriteLine("-------------------------------------");
-
-                    if (quantidadeErros == 0)
+                    for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
                     {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/        |        ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
+                        //acessar o array no indicce 0
+                        letrasEncontradas[caractere] = '_';
                     }
 
-                    else if (quantidadeErros == 1)
-                    {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/                ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |                      ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    else if (quantidadeErros == 2)
-                    {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/                ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |         x            ");
-                        Console.WriteLine(" |         x         ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    else if (quantidadeErros == 3)
-                    {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/                ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |        /x\\             ");
-                        Console.WriteLine(" |         x         ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    else if (quantidadeErros == 4)
-                    {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/                ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |        /x\\             ");
-                        Console.WriteLine(" |         x         ");
-                        Console.WriteLine(" |        / \\        ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    else if (quantidadeErros == 4)
-                    {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/                ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |        /x\\             ");
-                        Console.WriteLine(" |         x         ");
-                        Console.WriteLine(" |        / \\        ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    else if (quantidadeErros == 5)
-                    {
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/                ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |        /x\\             ");
-                        Console.WriteLine(" |         x         ");
-                        Console.WriteLine(" |        / \\        ");
-                        Console.WriteLine(" |       -----          ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
-                        Console.WriteLine("-------------------------------------");
-                    }
+                    int quantidadeErros = 0;
+                    bool jogadorEnforcou = false;
+                    bool jogadorAcertou = false;
 
-                    Console.WriteLine("palavra secreta : " + dicaDaPalavra);
-                    Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("Quantidade de erros : " + quantidadeErros);
-                    Console.WriteLine("-------------------------------------");
-
-                    Console.Write("Digite uma letra: ");
-                    char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
-
-                    historicoDeTentivas[contadorHistorico] = $"A letra chutada foi : {chute}";
-                    contadorHistorico++;
-
-                    bool letraFoiEncontrada = false;
-
-                    for (int contador = 0; contador < palavraSecreta.Length; contador++)
+                    do
                     {
-                        char letraAtual = palavraSecreta[contador];
+                        string dicaDaPalavra = String.Join("", letrasEncontradas);
 
-                        if (chute == letraAtual)
+
+
+                        if (quantidadeErros == 0)
                         {
-                            letrasEncontradas[contador] = letraAtual;
-                            letraFoiEncontrada = true;
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/        |        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
                         }
 
-                    }
+                        else if (quantidadeErros == 1)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |                      ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 2)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |         x            ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 3)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 4)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 4)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 5)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |       -----          ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
 
-                    if (letraFoiEncontrada == false)
-                        quantidadeErros++;
+                        Console.WriteLine("palavra secreta : " + dicaDaPalavra);
+                        Console.WriteLine("-------------------------------------");
+                        Console.WriteLine("Quantidade de erros : " + quantidadeErros);
+                        Console.WriteLine("-------------------------------------");
 
 
-                    dicaDaPalavra = String.Join("", letrasEncontradas);
+                        Console.Write("Digite uma letra: ");
+                        char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
 
-                    jogadorAcertou = dicaDaPalavra == palavraSecreta;
-                    // O jogador poderá cometer 5 erros antes de perder.
-                    jogadorEnforcou = quantidadeErros == 6;
+                        historicoDeTentivas[contadorHistorico] = $"A letra chutada foi : {chute}";
+                        contadorHistorico++;
+
+                        bool letraFoiEncontrada = false;
+
+                        
+                        for (int contador = 0; contador < palavraSecreta.Length; contador++)
+                        {
+                            char letraAtual = palavraSecreta[contador];
+
+                            if (chute == letraAtual)
+                            {
+                                letrasEncontradas[contador] = letraAtual;
+                                letraFoiEncontrada = true;
+                            }
+
+                        }
+
+                        if (letraFoiEncontrada == false)
+                            quantidadeErros++;
 
 
-                    if (jogadorAcertou)
+                        dicaDaPalavra = String.Join("", letrasEncontradas);
+
+                        jogadorAcertou = dicaDaPalavra == palavraSecreta;
+                        // O jogador poderá cometer 5 erros antes de perder.
+                        jogadorEnforcou = quantidadeErros == 6;
+
+
+                        if (jogadorAcertou)
+                        {
+                            Console.WriteLine("-------------------------------------");
+                            Console.WriteLine("Você acertou a palavra secreta, Parabéns!!");
+                            Console.WriteLine("-------------------------------------");
+
+                        }
+                        else if (jogadorEnforcou)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/        |        ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |       -----          ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                            Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecreta);
+                            Console.WriteLine("-------------------------------------");
+
+                        }
+
+                        Console.WriteLine("--------------------------------------------");
+                        Console.WriteLine("Histórico de Tentativas");
+                        Console.WriteLine("--------------------------------------------");
+
+                        for (int contador = 0; contador < contadorHistorico; contador++)
+                        {
+
+                            Console.WriteLine(historicoDeTentivas[contador]);
+                        }
+
+
+                    } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+                    contadorHistorico++;
+                    Console.ReadLine();
+                }
+                else if (entrada == "2")
+                {
+                    for (int caractere = 0; caractere < letrasEncontradasdois.Length; caractere++)
                     {
-                        Console.WriteLine("-------------------------------------");
-                        Console.WriteLine("Você acertou a palavra secreta, Parabéns!!");
-                        Console.WriteLine("-------------------------------------");
-
+                        //acessar o array no indicce 0
+                        letrasEncontradasdois[caractere] = '_';
                     }
-                    else if (jogadorEnforcou)
+
+                    int quantidadeErros = 0;
+                    bool jogadorEnforcou = false;
+                    bool jogadorAcertou = false;
+
+                    do
                     {
-                        Console.Clear();
-                        Console.WriteLine(" ___________        ");
-                        Console.WriteLine(" |/        |        ");
-                        Console.WriteLine(" |         o        ");
-                        Console.WriteLine(" |        /x\\             ");
-                        Console.WriteLine(" |         x         ");
-                        Console.WriteLine(" |        / \\        ");
-                        Console.WriteLine(" |       -----          ");
-                        Console.WriteLine(" |                  ");
-                        Console.WriteLine("_|____              ");
+                        string dicaDaPalavra = String.Join("", letrasEncontradasdois);
+
+
+
+                        if (quantidadeErros == 0)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/        |        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+
+                        else if (quantidadeErros == 1)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |                      ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 2)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |         x            ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 3)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 4)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 4)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 5)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |       -----          ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+
+                        Console.WriteLine("palavra secreta : " + dicaDaPalavra);
                         Console.WriteLine("-------------------------------------");
-                        Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecreta);
+                        Console.WriteLine("Quantidade de erros : " + quantidadeErros);
                         Console.WriteLine("-------------------------------------");
 
-                    }
+                        
+                        Console.Write("Digite uma letra: ");
+                        char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
 
-                    Console.WriteLine("--------------------------------------------");
-                    Console.WriteLine("Histórico de Tentativas");
-                    Console.WriteLine("--------------------------------------------");
+                        historicoDeTentivas[contadorHistorico] = $"A letra chutada foi : {chute}";
+                        contadorHistorico++;
 
-                    for (int contador = 0; contador < contadorHistorico; contador++)
+                        bool letraFoiEncontrada = false;                        
+
+                        for (int contador = 0; contador < palavraSecretadois.Length; contador++)
+                        {
+                            char letraAtual = palavraSecretadois[contador];
+
+                            if (chute == letraAtual)
+                            {
+                                letrasEncontradasdois[contador] = letraAtual;
+                                letraFoiEncontrada = true;
+                            }
+
+                        }
+
+                        if (letraFoiEncontrada == false)
+                            quantidadeErros++;
+
+
+                        dicaDaPalavra = String.Join("", letrasEncontradasdois);
+
+                        jogadorAcertou = dicaDaPalavra == palavraSecretadois;
+                        // O jogador poderá cometer 5 erros antes de perder.
+                        jogadorEnforcou = quantidadeErros == 6;
+
+
+                        if (jogadorAcertou)
+                        {
+                            Console.WriteLine("-------------------------------------");
+                            Console.WriteLine("Você acertou a palavra secreta, Parabéns!!");
+                            Console.WriteLine("-------------------------------------");
+
+                        }
+                        else if (jogadorEnforcou)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/        |        ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |       -----          ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                            Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecretadois);
+                            Console.WriteLine("-------------------------------------");
+
+                        }
+
+                        Console.WriteLine("--------------------------------------------");
+                        Console.WriteLine("Histórico de Tentativas");
+                        Console.WriteLine("--------------------------------------------");
+
+                        for (int contador = 0; contador < contadorHistorico; contador++)
+                        {
+
+                            Console.WriteLine(historicoDeTentivas[contador]);
+                        }
+
+
+                    } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+                    contadorHistorico++;
+                    Console.ReadLine();
+                }
+                else if (entrada == "3")
+                {
+                    for (int caractere = 0; caractere < letrasEncontradastres.Length; caractere++)
                     {
-
-                        Console.WriteLine(historicoDeTentivas[contador]);
+                        //acessar o array no indicce 0
+                        letrasEncontradastres[caractere] = '_';
                     }
 
+                    int quantidadeErros = 0;
+                    bool jogadorEnforcou = false;
+                    bool jogadorAcertou = false;
 
-                } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
-                contadorHistorico++;
-                Console.ReadLine();
-            }
+                    do
+                    {
+                        string dicaDaPalavra = String.Join("", letrasEncontradastres);
+
+
+
+                        if (quantidadeErros == 0)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/        |        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+
+                        else if (quantidadeErros == 1)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |                      ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 2)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |         x            ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 3)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 4)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 4)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+                        else if (quantidadeErros == 5)
+                        {
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/                ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |       -----          ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                        }
+
+                        Console.WriteLine("palavra secreta : " + dicaDaPalavra);
+                        Console.WriteLine("-------------------------------------");
+                        Console.WriteLine("Quantidade de erros : " + quantidadeErros);
+                        Console.WriteLine("-------------------------------------");
+
+
+                        Console.Write("Digite uma letra: ");
+                        char chute = Console.ReadLine()[0]; // char obetém, apenas uma letra de uma palavra(caracter)
+
+                        historicoDeTentivas[contadorHistorico] = $"A letra chutada foi : {chute}";
+                        contadorHistorico++;
+
+                        bool letraFoiEncontrada = false;
+
+                        for (int contador = 0; contador < palavraSecretatres.Length; contador++)
+                        {
+                            char letraAtual = palavraSecretatres[contador];
+
+                            if (chute == letraAtual)
+                            {
+                                letrasEncontradastres[contador] = letraAtual;
+                                letraFoiEncontrada = true;
+                            }
+
+                        }
+
+                        if (letraFoiEncontrada == false)
+                            quantidadeErros++;
+
+
+                        dicaDaPalavra = String.Join("", letrasEncontradastres);
+
+                        jogadorAcertou = dicaDaPalavra == palavraSecretatres;
+                        // O jogador poderá cometer 5 erros antes de perder.
+                        jogadorEnforcou = quantidadeErros == 6;
+
+
+                        if (jogadorAcertou)
+                        {
+                            Console.WriteLine("-------------------------------------");
+                            Console.WriteLine("Você acertou a palavra secreta, Parabéns!!");
+                            Console.WriteLine("-------------------------------------");
+
+                        }
+                        else if (jogadorEnforcou)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" ___________        ");
+                            Console.WriteLine(" |/        |        ");
+                            Console.WriteLine(" |         o        ");
+                            Console.WriteLine(" |        /x\\             ");
+                            Console.WriteLine(" |         x         ");
+                            Console.WriteLine(" |        / \\        ");
+                            Console.WriteLine(" |       -----          ");
+                            Console.WriteLine(" |                  ");
+                            Console.WriteLine("_|____              ");
+                            Console.WriteLine("-------------------------------------");
+                            Console.WriteLine("Você errou a palavra secreta, Tente novamente!! a palavra secreta era : " + palavraSecretatres);
+                            Console.WriteLine("-------------------------------------");
+
+                        }
+
+                        Console.WriteLine("--------------------------------------------");
+                        Console.WriteLine("Histórico de Tentativas");
+                        Console.WriteLine("--------------------------------------------");
+
+                        for (int contador = 0; contador < contadorHistorico; contador++)
+                        {
+
+                            Console.WriteLine(historicoDeTentivas[contador]);
+                        }
+
+
+                    } while (jogadorAcertou == false && jogadorEnforcou == false); // -- || significa "OU"   && significa "E"
+                    contadorHistorico++;
+                    Console.ReadLine();
+
+                }
+
+                
+
+
+                    
+                }
 
 
         }
